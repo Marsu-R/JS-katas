@@ -30,7 +30,32 @@
 // isBalanced("Sensei say's no!", "''")         // => False
 
 function isBalanced(s, caps) {
-  //
+  if (!caps) {
+    return true;
+  }
+  let capsArr = caps.match(/.{1,2}/g);
+  let stringArr = s.split("");
+  let stack = [];
+
+  for (let i = 0; i < stringArr.length; i++) {
+    if (stringArr[i] == stack[stack.length - 1]) {
+      stack.pop();
+      continue;
+    }
+
+    for (let j = 0; j < capsArr.length; j++) {
+      if (
+        stringArr[i] == capsArr[j][1] &&
+        capsArr[j][0] !== capsArr[j][1] &&
+        !stack.length
+      ) {
+        return false;
+      } else if (stringArr[i] == capsArr[j][0]) {
+        stack.push(capsArr[j][1]);
+      }
+    }
+  }
+  return stack.length === 0;
 }
 
 //isBalanced("(Sensei says yes!)", "()");
