@@ -28,3 +28,34 @@
 // Negative numbers and duplicate numbers can and will appear.
 
 // NOTE: There will also be lists tested of lengths upwards of 10,000,000 elements. Be sure your code doesn't time out.
+
+function sum_pairs(ints, s) {
+  // Declare an object to track the numbers checked and their first index
+
+  const numbersChecked = {};
+
+  for (let i = 0; i < ints.length; i += 1) {
+    console.log(numbersChecked);
+    // For every number of the input array
+    const currentNumber = ints[i];
+    // Find the pair it needs to add up to "s"
+    const pair = s - currentNumber;
+    console.log(pair);
+
+    // If the pair was seen before, it's the best set of numbers
+    if (numbersChecked[pair] !== undefined) {
+      // console.log(numbersChecked[pair])
+      // console.log(currentNumber)
+      return [pair, currentNumber];
+    }
+
+    // Otherwise save this number's index if it wasn't seen before
+    if (numbersChecked[currentNumber] === undefined) {
+      //console.log(numbersChecked[currentNumber])
+      numbersChecked[currentNumber] = i;
+    }
+  }
+
+  // Return null if no matching pairs are found at the end of the loop
+  return null;
+}
