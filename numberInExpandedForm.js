@@ -1,4 +1,4 @@
-// May 30, 2020
+// May 3, 2020
 // Write Number in Expanded Form, 6kyu
 // https://www.codewars.com/kata/write-number-in-expanded-form/train/javascript
 
